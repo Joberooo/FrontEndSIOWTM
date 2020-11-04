@@ -211,17 +211,17 @@ class Register extends React.Component<any, RegisterState> {
                                     <input type="password" value={this.state.checkPassword} onChange={this.handleChangeCheckPassword} />
                                 </div>
                                 <div id="registerInput">
+                                    <p>Pesel:</p>
+                                    <input type="text" value={this.state.pesel} onChange={this.handleChangePesel} maxLength={11} />
+                                    <i style={{color : this.state.validationPeselColor}}>{this.state.peselText}</i>
+                                </div>
+                                <div id="registerInput">
                                     <p>Imię:</p>
                                     <input type="text" value={this.state.firstName} onChange={this.handleChangeFirstName} />
                                 </div>
                                 <div id="registerInput">
                                     <p>Nazwisko:</p>
                                     <input type="text" value={this.state.lastName} onChange={this.handleChangeLastName} />
-                                </div>
-                                <div id="registerInput">
-                                    <p>Pesel:</p>
-                                    <input type="text" value={this.state.pesel} onChange={this.handleChangePesel} maxLength={11} />
-                                    <i style={{color : this.state.validationPeselColor}}>{this.state.peselText}</i>
                                 </div>
                             </label>
                         </div>
