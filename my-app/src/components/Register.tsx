@@ -57,58 +57,30 @@ class Register extends React.Component<any, RegisterState> {
 
     handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ login: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleChangeEmail(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ email: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ password: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleChangeCheckPassword(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ checkPassword: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleChangeFirstName(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ firstName: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleChangeLastName(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ lastName: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleChangePesel(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ pesel: event.target.value });
-        this.checkPasswordCorrect();
-        this.checkPeselCorrect();
-        this.checkEmailCorrect();
-        this.checkButtonStatus();
     }
 
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -182,9 +154,16 @@ class Register extends React.Component<any, RegisterState> {
         else this.setState({buttonStatus: true});
     }
 
+    validate = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        this.checkPasswordCorrect();
+        this.checkPeselCorrect();
+        this.checkEmailCorrect();
+        this.checkButtonStatus();
+    }
+
     render() {
         return (
-            <div id="register" >
+            <div id="register" onKeyUp={this.validate}>
                 <div id="registerImg">
                     <img src={userSvg} alt="User SVG" />
                 </div>
