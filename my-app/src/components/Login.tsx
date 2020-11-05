@@ -20,12 +20,10 @@ class Login extends React.Component<any, LoginState> {
 
     handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ login: event.target.value });
-        this.checkButtonStatus();
     }
 
     handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ password: event.target.value });
-        this.checkButtonStatus();
     }
 
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -38,9 +36,13 @@ class Login extends React.Component<any, LoginState> {
         else this.setState({buttonStatus: true});
     }
 
+    validate = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        this.checkButtonStatus();
+    }
+
     render() {
         return (
-            <div id="login" >
+            <div id="login" onKeyUp={this.validate}>
                 <div id="loginImg">
                     <img src={userSvg} alt="User SVG" />
                 </div>
