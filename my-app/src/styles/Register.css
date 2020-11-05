@@ -20,6 +20,7 @@
 
 #register #registerImg img{
     margin: 50px 0 10px;
+    width: 100%;
 }
 
 #register #registerForm{

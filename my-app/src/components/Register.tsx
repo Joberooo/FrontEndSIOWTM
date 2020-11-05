@@ -11,6 +11,9 @@ interface RegisterState {
     checkPassword: string;
     passwordCorrect: boolean;
     passwordText: string;
+    phoneNumber: string;
+    phoneNumberText: string;
+    phoneNumberCorrect: boolean;
     firstName: string;
     lastName: string;
     pesel: string;
@@ -20,6 +23,7 @@ interface RegisterState {
     validationPasswordColor: string;
     validationPeselColor: string;
     validationEmailColor: string;
+    validationPhoneNumberColor: string;
 }
 
 class Register extends React.Component<any, RegisterState> {
@@ -34,21 +38,26 @@ class Register extends React.Component<any, RegisterState> {
             checkPassword: '',
             passwordCorrect: false,
             passwordText: 'Wprowadź hasło i jego potwierdzenie.',
+            phoneNumber: '',
+            phoneNumberText: 'Wprowadź poprawny numer telefonu.',
+            phoneNumberCorrect: false,
             firstName: '',
             lastName: '',
             pesel: '',
             peselText: 'Wprowadź poprawny pesel.',
             peselCorrect: false,
             buttonStatus: true,
-            validationPasswordColor: "#ff0000",
-            validationPeselColor: "#ff0000",
-            validationEmailColor: "#ff0000"
+            validationPasswordColor: '#ff0000',
+            validationPeselColor: '#ff0000',
+            validationEmailColor: '#ff0000',
+            validationPhoneNumberColor: '#ff0000'
         };
 
         this.handleChangeLogin = this.handleChangeLogin.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleChangeCheckPassword = this.handleChangeCheckPassword.bind(this);
+        this.handleChangeCheckPhoneNumber = this.handleChangeCheckPhoneNumber.bind(this);
         this.handleChangeFirstName = this.handleChangeFirstName.bind(this);
         this.handleChangeLastName = this.handleChangeLastName.bind(this);
         this.handleChangePesel = this.handleChangePesel.bind(this);
@@ -71,6 +80,10 @@ class Register extends React.Component<any, RegisterState> {
         this.setState({ checkPassword: event.target.value });
     }
 
+    handleChangeCheckPhoneNumber(event: React.ChangeEvent<HTMLInputElement>){
+        this.setState({ phoneNumber: event.target.value });
+    }
+
     handleChangeFirstName(event: React.ChangeEvent<HTMLInputElement>) {
         this.setState({ firstName: event.target.value });
     }
@@ -89,6 +102,7 @@ class Register extends React.Component<any, RegisterState> {
             'Email: ' + this.state.email + '\n' +
             'Password: ' + this.state.password + '\n' +
             'CheckPassword: ' + this.state.checkPassword + '\n' +
+            'PhoneNumber: ' + this.state.phoneNumber + '\n' +
             'Name: ' + this.state.firstName + '\n' +
             'LastName: ' + this.state.lastName +  '\n' +
             'Pesel: ' + this.state.pesel
@@ -106,6 +120,17 @@ class Register extends React.Component<any, RegisterState> {
         else if(this.state.password !== '' && this.state.checkPassword === '') this.setState({passwordText: 'Wprowadź potwierdzenie hasła.', validationPasswordColor: "#ff0000", passwordCorrect: false});
         else if(this.state.password === '' && this.state.checkPassword !== '') this.setState({passwordText: 'Wprowadź hasło.', validationPasswordColor: "#ff0000", passwordCorrect: false});
         else this.setState({passwordText: 'Wprowadź hasło i jego potwierdzenie.', validationPasswordColor: "#ff0000", passwordCorrect: false});
+    }
+
+    checkPhoneNumberCorrect(){
+        if(this.state.phoneNumber.length === 0) this.setState({phoneNumberText: 'Wprowadź poprawny numer telefonu.', validationPhoneNumberColor: "#ff0000", phoneNumberCorrect: false});
+        else if(this.state.phoneNumber.length !== 9) this.setState({phoneNumberText: 'Za mało znaków.', validationPhoneNumberColor: "#ff0000", phoneNumberCorrect: false});
+        else {
+            const expression = /^[0-9]{9}$/;
+            
+            if(expression.test(this.state.phoneNumber)) this.setState({phoneNumberText: 'Poprawnie wprowadzono numer telefonu.', validationPhoneNumberColor: "#00ff00", phoneNumberCorrect: true});
+            else this.setState({phoneNumberText: 'Wprowadzono błędny numer telefonu.', validationPhoneNumberColor: "#ff0000", phoneNumberCorrect: false});
+        }
     }
 
     checkPeselCorrect(){
@@ -146,6 +171,8 @@ class Register extends React.Component<any, RegisterState> {
             this.state.password !== '' &&
             this.state.checkPassword !== '' &&
             this.state.passwordCorrect === true &&
+            this.state.phoneNumber !== '' &&
+            this.state.phoneNumberCorrect === true &&
             this.state.firstName !== '' &&
             this.state.lastName !== '' &&
             this.state.pesel !== '' &&
@@ -156,6 +183,7 @@ class Register extends React.Component<any, RegisterState> {
 
     validate = (event: React.KeyboardEvent<HTMLDivElement>) => {
         this.checkPasswordCorrect();
+        this.checkPhoneNumberCorrect();
         this.checkPeselCorrect();
         this.checkEmailCorrect();
         this.checkButtonStatus();
@@ -184,6 +212,11 @@ class Register extends React.Component<any, RegisterState> {
                                     <p>Hasło:</p>
                                     <input type="password" value={this.state.password} onChange={this.handleChangePassword} />
                                     <i style={{color : this.state.validationPasswordColor}}>{this.state.passwordText}</i>
+                                </div>
+                                <div id="registerInput">
+                                    <p>Numer telefonu:</p>
+                                    <input type="text" value={this.state.phoneNumber} onChange={this.handleChangeCheckPhoneNumber} maxLength={9}/>
+                                    <i style={{color : this.state.validationPhoneNumberColor}}>{this.state.phoneNumberText}</i>
                                 </div>
                                 <div id="registerInput">
                                     <p>Potwierdź hasło:</p>
