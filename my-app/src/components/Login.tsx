@@ -2,6 +2,7 @@ import React from 'react';
 import '../styles/Login.css';
 import userSvg from '../resources/user.svg';
 import Header from './Header';
+import { Link } from 'react-router-dom';
 
 interface LoginState {
     login: string;
@@ -62,7 +63,9 @@ class Login extends React.Component<any, LoginState> {
                                 </div>
                             </label>
                             <div id="loginButton">
-                                <input type="submit" value="Zaloguj" disabled={this.state.buttonStatus} />
+                                <Link to="/customerPanel">
+                                    <input type="submit" value="Zaloguj" disabled={this.state.buttonStatus} />
+                                </Link>
                             </div>
                         </form>
                     </div>

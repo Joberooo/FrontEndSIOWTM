@@ -5,6 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import CustomerPanel from './CustomerPanel';
 import Register from './Register';
+import Logout from './Logout';
 
 function MainContent() {
     return (
@@ -19,6 +20,9 @@ function MainContent() {
                     </Route>
                     <Route path="/customerPanel">
                         <CustomerPanel />
+                    </Route>
+                    <Route path="/logout">
+                        <Logout />
                     </Route>
                     <Route path="/">
                         <Home />

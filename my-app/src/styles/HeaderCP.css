@@ -32,7 +32,7 @@
     float: right;
     height: 50px;
     overflow: hidden;
-    width: 190px;
+    width: 286px;
 }
 
 #headerCP #headerCPImgDataArea #headerCPData{
@@ -49,7 +49,7 @@
     display: block;
     float: left;
     height: 50px;
-    margin: 0 10px 0 0;
+    margin: 0;
     width: 50px;
 }
 
@@ -58,10 +58,27 @@
     padding: 5px;
 }
 
+#headerCP #headerCPImgDataArea #headerCPLogout{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    margin-left: 10px;
+    text-transform: uppercase;
+    color: #ededed;
+    width: 75px;
+    border-left: 1px solid #ededed;
+    padding: 0 10px;
+}
+
+#headerCP #headerCPImgDataArea #headerCPLogout:hover a{
+    color: #bcbcbc;
+}
+
 @media only screen and (max-width: 700px) {
     #headerCP{
         float: none;
-        height: 100px;
+        height: 150px;
         text-align: center;
     }
 
@@ -72,5 +89,13 @@
     #headerCP #headerCPImgDataArea{
         margin: 0 auto;
         float: none;
+        height: 100px;
+        width: 180px;
+    }
+
+    #headerCP #headerCPImgDataArea #headerCPLogout{
+        margin: 0 auto;
+        float: none;
+        border-left: none;
     }
   }

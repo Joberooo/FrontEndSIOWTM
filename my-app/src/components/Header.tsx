@@ -17,9 +17,6 @@ function Header() {
                     <li>
                         <Link to="/register">Zarejestruj</Link>
                     </li>
-                    <li>
-                        <Link to="/customerPanel">Panel Klienta</Link>
-                    </li>
                 </ul>
             </div>
         </div>
