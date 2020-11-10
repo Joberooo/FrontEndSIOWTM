@@ -1,8 +1,9 @@
 import React from 'react';
 import '../styles/Login.css';
 import userSvg from '../resources/user.svg';
+import Header from './Header';
 
-interface LoginState{
+interface LoginState {
     login: string;
     password: string;
     buttonStatus: boolean;
@@ -11,7 +12,7 @@ interface LoginState{
 class Login extends React.Component<any, LoginState> {
     constructor(props: any) {
         super(props);
-        this.state = { login: '', password: '', buttonStatus: true};
+        this.state = { login: '', password: '', buttonStatus: true };
 
         this.handleChangeLogin = this.handleChangeLogin.bind(this);
         this.handleChangePassword = this.handleChangePassword.bind(this);
@@ -32,8 +33,8 @@ class Login extends React.Component<any, LoginState> {
     }
 
     checkButtonStatus() {
-        if(this.state.login !== '' && this.state.password !== '') this.setState({buttonStatus: false});
-        else this.setState({buttonStatus: true});
+        if (this.state.login !== '' && this.state.password !== '') this.setState({ buttonStatus: false });
+        else this.setState({ buttonStatus: true });
     }
 
     validate = (event: React.KeyboardEvent<HTMLDivElement>) => {
@@ -42,28 +43,31 @@ class Login extends React.Component<any, LoginState> {
 
     render() {
         return (
-            <div id="login" onKeyUp={this.validate}>
-                <div id="loginImg">
-                    <img src={userSvg} alt="User SVG" />
-                </div>
-                <div id="loginForm">
-                    <form onSubmit={this.handleSubmit}>
-                        <label>
-                            <p>Login:</p>
-                            <div id="loginInput">
-                                <input type="text" value={this.state.login} onChange={this.handleChangeLogin} />
+            <>
+                <Header />
+                <div id="login" onKeyUp={this.validate}>
+                    <div id="loginImg">
+                        <img src={userSvg} alt="User SVG" />
+                    </div>
+                    <div id="loginForm">
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                <p>Login:</p>
+                                <div id="loginInput">
+                                    <input type="text" value={this.state.login} onChange={this.handleChangeLogin} />
+                                </div>
+                                <p>Hasło:</p>
+                                <div id="loginInput">
+                                    <input type="password" value={this.state.password} onChange={this.handleChangePassword} />
+                                </div>
+                            </label>
+                            <div id="loginButton">
+                                <input type="submit" value="Zaloguj" disabled={this.state.buttonStatus} />
                             </div>
-                            <p>Hasło:</p>
-                            <div id="loginInput">
-                                <input type="password" value={this.state.password} onChange={this.handleChangePassword} />
-                            </div>
-                        </label>
-                        <div id="loginButton">
-                            <input type="submit" value="Zaloguj" disabled={this.state.buttonStatus} />
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

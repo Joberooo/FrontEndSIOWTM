@@ -90,3 +90,29 @@
 #register #registerForm #registerButton input:disabled{
     opacity: 0.5;
 }
+
+@media only screen and (max-width: 1000px) {
+    #register{
+        width: 70%;
+    }
+
+    #register #registerForm{
+        width: calc(100% - 150px);
+        margin: 0 75px;
+    }
+
+    #register #registerForm #registerFormContent #registerInput{
+        width: calc(100% - 20px);
+    }
+  }
+
+@media only screen and (max-width: 700px) {
+    #register{
+        width: 80%;
+    }
+
+    #register #registerForm{
+        width: calc(100% - 100px);
+        margin: 0 50px;
+    }
+  }

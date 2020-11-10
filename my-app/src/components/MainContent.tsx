@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import '../styles/MainContent.css';
 import Home from './Home';
 import Login from './Login';
@@ -9,25 +9,6 @@ import Register from './Register';
 function MainContent() {
     return (
         <Router>
-            <div id="header">
-                <div id="headerText"><Link to="/"><h1>SI OWTM</h1></Link></div>
-                <div id="headerNav">
-                    <ul>
-                        <li>
-                            <Link to="/">Strona Główna</Link>
-                        </li>
-                        <li>
-                            <Link to="/login">Zaloguj</Link>
-                        </li>
-                        <li>
-                            <Link to="/register">Zarejestruj</Link>
-                        </li>
-                        <li>
-                            <Link to="/customerPanel">Panel Klienta</Link>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <div id="content">
                 <Switch>
                     <Route path="/login">
