@@ -4,6 +4,7 @@ import '../styles/MainContent.css';
 import Home from './Home';
 import Login from './Login';
 import CustomerPanel from './CustomerPanel';
+import DoctorPanel from './DoctorPanel';
 import Register from './Register';
 import Logout from './Logout';
 
@@ -20,6 +21,9 @@ function MainContent() {
                     </Route>
                     <Route path="/customerPanel">
                         <CustomerPanel />
+                    </Route>
+                    <Route path="/doctorPanel">
+                        <DoctorPanel />
                     </Route>
                     <Route path="/logout">
                         <Logout />

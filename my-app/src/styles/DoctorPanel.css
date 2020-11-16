@@ -1,4 +1,4 @@
-#customerPanel{
+#doctorPanel{
     width: 100%;
     margin: 0;
     padding: 0;
@@ -6,16 +6,16 @@
     color: #ededed;
 }
 
-#customerPanel a{
+#doctorPanel a{
     text-decoration: none;
     color: #ededed;
 }
 
-#customerPanel #customerPanelContent{
+#doctorPanel #doctorPanelContent{
     overflow: hidden;
 }
 
-#customerPanel .customerPanelBlock{
+#doctorPanel .doctorPanelBlock{
     width: 42.5%;
     height: calc(42.5vh - 25px);
     overflow: hidden;
@@ -25,36 +25,39 @@
     box-shadow: 0px 10px 20px #565656;
 }
 
-#customerPanel .left{
+#doctorPanel .left{
     margin-left: 5%;
     margin-right: 2.5%;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
     text-align: left;
+    height: calc(90vh - 50px);
 }
 
-#customerPanel .right{
+#doctorPanel .right{
     margin-left: 2.5%;
     margin-right: 5%;
     text-align: right;
 }
 
-#customerPanel .top{
+#doctorPanel .top{
     margin-top: 5vh;
     margin-bottom: 2.5vh;
 }
 
-#customerPanel .bottom{
+#doctorPanel .bottom{
     margin-top: 2.5vh;
     margin-bottom: 5vh;
 }
 
-#customerPanel .customerPanelBlock .blockTopic{
+#doctorPanel .doctorPanelBlock .blockTopic{
     margin: 0;
     padding: 0;
     display: inline-block;
     border-bottom: 1px solid #ededed;
 }
 
-#customerPanel .customerPanelBlock .blockTopic h2{
+#doctorPanel .doctorPanelBlock .blockTopic h2{
     text-transform: uppercase;
     margin: 10px;
     padding: 0;
@@ -116,35 +119,35 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    #customerPanel .customerPanelBlock{
+    #doctorPanel .doctorPanelBlock{
         width: 90%;
         height: auto;
         min-height: calc(90vh - 25px);
     }
     
-    #customerPanel .left{
+    #doctorPanel .left{
         margin-left: 5%;
         margin-right: 5%;
         text-align: center;
     }
     
-    #customerPanel .right{
+    #doctorPanel .right{
         margin-left: 5%;
         margin-right: 5%;
         text-align: center;
     }
     
-    #customerPanel .top{
+    #doctorPanel .top{
         margin-top: 5vh;
         margin-bottom: 5vh;
     }
     
-    #customerPanel .bottom{
+    #doctorPanel .bottom{
         margin-top: 5vh;
         margin-bottom: 5vh;
     }
 
-    #customerPanel .customerPanelBlock .blockTopic{
+    #doctorPanel .doctorPanelBlock .blockTopic{
         display: block;
     }
 

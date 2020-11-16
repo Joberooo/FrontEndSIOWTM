@@ -1,78 +1,64 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/Login.css';
 import userSvg from '../resources/user.svg';
 import Header from './Header';
-import { Link } from 'react-router-dom';
 
-interface LoginState {
-    login: string;
-    password: string;
-    buttonStatus: boolean;
-}
+function Login() {
 
-class Login extends React.Component<any, LoginState> {
-    constructor(props: any) {
-        super(props);
-        this.state = { login: '', password: '', buttonStatus: true };
+    const [login, setLogin] = useState('');
+    const [password, setPassword] = useState('');
+    const [buttonStatus, setButtonStatus] = useState(true);
+    const [isdoctor, setIsDoctor] = useState(true);
 
-        this.handleChangeLogin = this.handleChangeLogin.bind(this);
-        this.handleChangePassword = this.handleChangePassword.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+    function handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>) {
+        setLogin(event.target.value);
     }
 
-    handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ login: event.target.value });
+    function handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
+        setPassword(event.target.value);
     }
 
-    handleChangePassword(event: React.ChangeEvent<HTMLInputElement>) {
-        this.setState({ password: event.target.value });
-    }
-
-    handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-        alert('Login: ' + this.state.login + '\nPassword: ' + this.state.password);
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        isdoctor ? window.open("/doctorPanel", "_self") : window.open("/customerPanel", "_self")
     }
 
-    checkButtonStatus() {
-        if (this.state.login !== '' && this.state.password !== '') this.setState({ buttonStatus: false });
-        else this.setState({ buttonStatus: true });
+    function checkButtonStatus() {
+        if (login !== '' && password !== '') setButtonStatus(false);
+        else setButtonStatus(true);
     }
 
-    validate = (event: React.KeyboardEvent<HTMLDivElement>) => {
-        this.checkButtonStatus();
+    function validate(event: React.KeyboardEvent<HTMLDivElement>){
+        checkButtonStatus();
     }
 
-    render() {
-        return (
-            <>
-                <Header />
-                <div id="login" onKeyUp={this.validate}>
-                    <div id="loginImg">
-                        <img src={userSvg} alt="User SVG" />
-                    </div>
-                    <div id="loginForm">
-                        <form onSubmit={this.handleSubmit}>
-                            <label>
-                                <p>Login:</p>
-                                <div id="loginInput">
-                                    <input type="text" value={this.state.login} onChange={this.handleChangeLogin} />
-                                </div>
-                                <p>Hasło:</p>
-                                <div id="loginInput">
-                                    <input type="password" value={this.state.password} onChange={this.handleChangePassword} />
-                                </div>
-                            </label>
-                            <div id="loginButton">
-                                <Link to="/customerPanel">
-                                    <input type="submit" value="Zaloguj" disabled={this.state.buttonStatus} />
-                                </Link>
-                            </div>
-                        </form>
-                    </div>
+    return (
+        <>
+            <Header />
+            <div id="login" onKeyUp={validate}>
+                <div id="loginImg">
+                    <img src={userSvg} alt="User SVG" />
                 </div>
-            </>
-        );
-    }
+                <div id="loginForm">
+                    <form onSubmit={handleSubmit}>
+                        <label>
+                            <p>Login:</p>
+                            <div id="loginInput">
+                                <input type="text" value={login} onChange={handleChangeLogin} />
+                            </div>
+                            <p>Hasło:</p>
+                            <div id="loginInput">
+                                <input type="password" value={password} onChange={handleChangePassword} />
+                            </div>
+                        </label>
+                        <div id="loginButton">
+                            <input type="submit" value="Zaloguj" disabled={buttonStatus} />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </>
+    );
 }
 
 export default Login;

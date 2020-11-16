@@ -12,7 +12,7 @@ class CustomerPanel extends React.Component<any, CustomerPanelState> {
         super(props);
         this.state = {
             firstName: 'Adam',
-            lastName: 'Padżet',
+            lastName: 'Padżet'
         };
     }
 
@@ -20,7 +20,7 @@ class CustomerPanel extends React.Component<any, CustomerPanelState> {
         return (
             <>
                 <div id="customerPanel">
-                    <HeaderCP firstName={this.state.firstName} lastName={this.state.lastName} />
+                    <HeaderCP firstName={this.state.firstName} lastName={this.state.lastName} isDoctor={false}/>
 
                     <div id="customerPanelContent">
                         <div className="customerPanelBlock left top">
