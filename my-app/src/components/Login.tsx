@@ -8,7 +8,7 @@ function Login() {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
     const [buttonStatus, setButtonStatus] = useState(true);
-    const [isdoctor, setIsDoctor] = useState(true);
+    const [isdoctor, setIsDoctor] = useState(false);
 
     function handleChangeLogin(event: React.ChangeEvent<HTMLInputElement>) {
         setLogin(event.target.value);
